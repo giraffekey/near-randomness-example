@@ -1,0 +1,23 @@
+[package]
+name = "randomness-contract"
+version = "0.1.0"
+edition = "2021"
+authors = ["giraffekey <giraffekey@tutanota.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+getrandom = { version = "0.2", features = ["custom"] }
+near-sdk = "3.1"
+rand = "0.8"
+rand_chacha = "0.3"
+uuid = { version = "1", features = ["v4"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
